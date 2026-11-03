@@ -1,0 +1,18 @@
+name: Build and test W1
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Show compiler version
+        run: g++ --version
+
+      - name: Build and run tests
+        run: bash tests/run_tests.sh 4827_C1.cpp
