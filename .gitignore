@@ -1,0 +1,9 @@
+# compiled programs
+main
+app
+*.out
+*.dSYM/
+
+# editor settings
+.vscode/
+.DS_Store
