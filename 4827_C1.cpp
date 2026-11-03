@@ -81,41 +81,44 @@ void task2() {
 }
 
 
-//  Task 3 - Loops / Iterations
-//  Prints a multiplication table from 1 up to N.
-//  Personalization: N = (4827 % 10) + 1 = 8.
+// Task 3 - Loops / Iterations
+// Prints a multiplication table from 1 up to N.
+// Personalization: N is calculated using 4827 % 10 + 1, which equals 8.
+// Error 3: uses the global variable.
 
 void task3() {
-    int personalizationnum = 4827;
-    int n = (personalizationnum % 10) + 1;
-    for (int i = 1; i <= n; i++) {
-        cout << n << " x " << i << " = " << n * i << endl;
+    int N = (personalizationNum % 10) + 1;
+
+    for (int i = 1; i <= N; i++) {
+        cout << N << " x " << i << " = " << N * i << endl;
     }
 }
 
 
-//  Task 4 - If-Else Conditions
-//  Checks whether a number is even or odd and prints it.
-//  Personalization: tests the full number 4827 (which is odd).
+// Task 4 - If-Else Conditions
+// Checks whether a number is even or odd.
+// Personalization: uses the full personalization number 4827 (odd).
+// Error 3: variable renamed to "number" so it does not hide the global.
 
 void task4() {
-    int personalizationNum = 4827;
-    cout << "My personalization number is " << personalizationNum << endl;
-    if (personalizationNum % 2 == 0) {
-        cout << "My personalization number " << personalizationNum << " is even" << endl;
+    int number = 4827;
+
+    if (number % 2 == 0) {
+        cout << number << " is even" << endl;
     } else {
-        cout << "My personalization number " << personalizationNum << " is odd" << endl;
+        cout << number << " is odd" << endl;
     }
 }
 
-//  Task 5 - Switch Case
-//  Displays the month name for a value between 1 and 12.
-//  Personalization: input = (4827 % 12) + 1 = 4 (April).
+
+// Task 5 - Switch Case
+// Displays the month name for a number between 1 and 12.
+// Personalization: month = (4827 % 12) + 1 = 4, so it prints April.
+// Error 3: no local copy of personalizationNum any more.
+
 void task5() {
-    cout << "MY personalization number is 4827" << endl;
-    int personalizationNum = 4827;
-    int month = (personalizationNum % 12) + 1;
-    cout << "The month is :" << month << endl;
+    int month = (4827 % 12) + 1;
+
     switch (month) {
         case 1:  cout << "January" << endl;   break;
         case 2:  cout << "February" << endl;  break;
@@ -129,7 +132,7 @@ void task5() {
         case 10: cout << "October" << endl;   break;
         case 11: cout << "November" << endl;  break;
         case 12: cout << "December" << endl;  break;
-        default: cout << "Wrong month number" << endl;
+        default: cout << "Invalid month" << endl;
     }
 }
 
