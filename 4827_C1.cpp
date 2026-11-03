@@ -24,7 +24,9 @@
            (personalizationNum), which hid the global. Task 3 now uses
            the global, Task 4 uses a variable called "number", and
            Task 5 calculates the month directly.
- Error 4 - Task 7 passed "4827" as the name. Now a real name is passed.
+ Error 4 - Task 7 passed only "4827" as the name. The brief says not to
+           put a real name in the code (anonymous marking), so the name is
+           now "Student 4827", built from the personalization number.
  Error 5 - Task 9 got stuck in an endless loop if a letter was typed.
            Now it clears the wrong input and asks again.
  Error 6 - showVariables() (Task 10) had no prototype at the top like
@@ -65,7 +67,7 @@ int main() {
     cout << "\nTask 4" << endl;  task4();
     cout << "\nTask 5" << endl;  task5();
     cout << "\nTask 6" << endl;  task6();
-    cout << "\nTask 7" << endl;  task7("Hussain", 27);   // Error 4: real name, marks 27
+    cout << "\nTask 7" << endl;  task7("Student 4827", 27);   // Error 4: no real name (anonymous marking), marks 27
     cout << "\nTask 8" << endl;
     for (int i = 0; i < 5; i++) task8();     // Exercise 8 requires calling the function 5 times
     cout << "\nTask 9" << endl;  task9();
