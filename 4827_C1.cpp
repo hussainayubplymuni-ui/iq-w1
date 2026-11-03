@@ -182,7 +182,14 @@ double ComputeAverage() {
     int count = 0;
     do {
         cin >> marks;
-        if (marks >= 0) {
+        // Error 5: if a letter is typed, clear it and ask again
+        if (cin.fail()) {
+            cin.clear();             // reset cin so it works again
+            cin.ignore(1000, '\n');  // throw away the wrong input
+            cout << "Please enter a number : " << endl;
+            marks = 0;               // so the loop does not stop
+        }
+        else if (marks >= 0) {
             total = total + marks;
             // Bug 1: original code added negative marks too.
             // Fix:  only add marks that are zero or positive.
