@@ -1,15 +1,38 @@
 //  LHPK4014 - Software Engineering 1
-//Assessment 1 (W1): Set Exercises - Combined Program
+//  Assessment 1 (W1): Set Exercises - Combined Program
 //  Personalization Number: 4827
+//  Version 2 (corrected version of Version 1)
 
 /*
  This program consists of 10 short exercises.
  Each exercise is written in its own function (task1 to task10).
  All exercises are called in order from the main() function.
  The personalization number 4827 is used for each exercise.
- Only Task 1 ,2 and 9 reads input from the user.
- All other tasks use values based on the assignment specifications
+ Only Task 9 reads input from the user.
+ All other tasks use fixed values based on the assignment specifications
  and personalization number.
+
+ Changes from Version 1 (errors found and fixed):
+ Error 1 - Task 1 asked the user to enter two numbers, but the task
+           did not need input. Now uses fixed values from 4827:
+           the second digit (8) and the last digit (7).
+ Error 2 - Task 2 asked the user to enter the second number, but the
+           task did not need input. Now uses a fixed value (5).
+           The digit sum (21) was also printed twice; extra lines removed.
+ Error 3 - Tasks 3, 4 and 5 each made their own local copy of 4827.
+           In Tasks 4 and 5 it had the same name as the global variable
+           (personalizationNum), which hid the global. Task 3 now uses
+           the global, Task 4 uses a variable called "number", and
+           Task 5 calculates the month directly.
+ Error 4 - Task 7 passed "4827" as the name. Now a real name is passed.
+ Error 5 - Task 9 got stuck in an endless loop if a letter was typed.
+           Now it clears the wrong input and asks again.
+ Error 6 - showVariables() (Task 10) had no prototype at the top like
+           the other functions. Prototype added.
+ Error 7 - The output had uneven spacing and typos ("MY personalization",
+           "Hello  welcome", " Task 1 "). Output text tidied up.
+ Error 8 - The header comment said Tasks 1, 2 and 9 read input.
+           Updated to say only Task 9 reads input.
 */
 
 #include <iostream>
@@ -27,27 +50,26 @@ void task7(string name, int marks);   // Exercise 7 uses parameters
 void task8();
 double ComputeAverage();              // helper for Exercise 9
 void task9();
+void showVariables();                 // Error 6: prototype added
 void task10();
 
-// Global variables (used by Task 10) 
+// Global variables
 int personalizationNum = 4827;        // global from my personalization number
-int globalCount = personalizationNum; // global counter starts at 4827
+int globalCount = personalizationNum; // global counter starts at 4827 (Task 10)
 
-// using main
-//  main runs all ten exercises in order
-
+// main runs all ten exercises in order
 int main() {
-    cout << " Task 1 " << endl;  task1();
-    cout << "\n Task 2 " << endl;  task2();
-    cout << "\n Task 3 " << endl;  task3();
-    cout << "\n Task 4 " << endl;  task4();
-    cout << "\n Task 5 " << endl;  task5();
-    cout << "\nTask 6 " << endl;  task6();
-    cout << "\nTask 7 " << endl;  task7("4827", 27); // name + marks passed as parameters
-    cout << "\n Task 8 " << endl;
+    cout << "Task 1" << endl;    task1();
+    cout << "\nTask 2" << endl;  task2();
+    cout << "\nTask 3" << endl;  task3();
+    cout << "\nTask 4" << endl;  task4();
+    cout << "\nTask 5" << endl;  task5();
+    cout << "\nTask 6" << endl;  task6();
+    cout << "\nTask 7" << endl;  task7("Hussain", 27);   // Error 4: real name, marks 27
+    cout << "\nTask 8" << endl;
     for (int i = 0; i < 5; i++) task8();     // Exercise 8 requires calling the function 5 times
-    cout << "\nTask 9 " << endl;  task9();
-    cout << "\n Task 10 " << endl; task10();
+    cout << "\nTask 9" << endl;  task9();
+    cout << "\nTask 10" << endl; task10();
     return 0;
 }
 
@@ -138,36 +160,36 @@ void task5() {
 }
 
 
-//  Task 6 - Arrays
-//  Declares an array of five numbers and prints the third value.
-//  Personalization: one array value is the last digit of 4827 (7).
+// Task 6 - Arrays
+// Creates an array of five numbers and prints its third value.
+// Personalization: One value in the array is the last digit of 4827 (7).
 
 void task6() {
-    cout << "The array contains five elements" << endl;
-    int array[5] = {20, 45, 7, 3, 9};
-    cout << "The third value is " << array[2] << endl;
+    int numbers[5] = {10, 20, 7, 40, 50};
+
+    // Arrays start at index 0, so numbers[2] is the third value
+    cout << "Third value = " << numbers[2] << endl;
 }
 
 
 //  Task 7 - Functions with Parameters
 //  Accepts a name and marks as parameters and displays a
 //  personalized welcome message with the marks.
-//  Personalization: 4827 passed as name, marks (27) from the
-//  last two digits of 4827.
-
+//  Personalization: marks (27) are the last two digits of 4827.
 void task7(string name, int marks) {
-    cout << "Hello  welcome " << name << endl;
+    cout << "Hello, welcome " << name << endl;
     cout << "Your marks are " << marks << endl;
 }
+
+
 //  Task 8 - Static Local Variable
 //  Displays the personalization number and the function call
 //  count using a static local variable.
 //  Personalization: called 5 times, shows 4827 each time.
-
 void task8() {
     static int count = 0;   // static: keeps its value between calls
     count++;
-    cout << " My personalization number is 4827" << endl;
+    cout << "My personalization number is 4827" << endl;
     cout << "Total function count is " << count << endl;
 }
 
@@ -220,7 +242,6 @@ void task9() {
 //  but a global is reachable from any function while a static
 //  is only reachable inside its own function; a local resets
 //  every call. All three start from 4827.
-
 void showVariables() {
     static int staticCount = personalizationNum; // static: persists across calls
     int localCount = personalizationNum;         // local: resets every call
